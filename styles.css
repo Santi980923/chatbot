@@ -1,0 +1,191 @@
+/* Ajustes generales */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 1rem;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f5f7;
+    color: #333;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Contenedor de chat */
+.chat-container {
+    display: none;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+    width: 100%;
+    max-width: 700px;
+    height: 70%;
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Clase para mostrar el chat con animación */
+.chat-container.visible {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Contenedor de entrada de texto */
+.input-container {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    gap: 0.5rem;
+    transition: all 0.7s ease-in-out;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Clase para mover el cuadro de entrada */
+.input-container.moved {
+    position: static;
+    margin-top: 1rem;
+    transform: translateY(0);
+}
+
+#inputText {
+    flex-grow: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    background-color: #f0f2f5;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    resize: none;
+    overflow-y: auto;
+    max-height: 150px;
+    transition: background-color 0.3s;
+}
+
+/* Estilo del scrollbar en el área de texto */
+#inputText::-webkit-scrollbar {
+    width: 6px;
+}
+
+#inputText::-webkit-scrollbar-thumb {
+    background-color: #c4c4c4;
+    border-radius: 3px;
+}
+
+#inputText:focus {
+    background-color: #e4e6eb;
+}
+
+/* Estilo del botón de enviar */
+#generateButton {
+    width: 48px;
+    height: 48px;
+    background-color: #0078D4;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0px 4px 10px rgba(0, 120, 212, 0.3);
+}
+
+/* Estilos cuando el botón está habilitado */
+#generateButton:hover {
+    background-color: #005A9E;
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 12px rgba(0, 90, 158, 0.4);
+}
+
+#generateButton:active {
+    transform: translateY(0);
+    box-shadow: 0px 3px 6px rgba(0, 90, 158, 0.3);
+}
+
+#generateButton svg {
+    fill: #ffffff;
+}
+
+/* Estilos cuando el botón está deshabilitado */
+#generateButton:disabled {
+    background-color: #c4c4c4;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+#generateButton:disabled:hover {
+    background-color: #c4c4c4;
+    transform: none;
+}
+
+#generateButton svg {
+    fill: #ffffff;
+}
+
+/* Animación para el mensaje */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos para los mensajes */
+.message {
+    padding: 12px;
+    border-radius: 12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    max-width: 85%;
+    overflow-wrap: break-word;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* Mensaje del usuario */
+.user-message {
+    background-color: #d1e7ff;
+    color: #004080;
+    align-self: flex-end;
+    max-width: 75%;
+    box-shadow: 0 2px 4px rgba(0, 64, 128, 0.15);
+}
+
+/* Mensaje de la IA */
+.ai-message {
+    background-color: #f0f2f5;
+    color: #333;
+    align-self: flex-start;
+    max-width: 75%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Scrollbar personalizado */
+.chat-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+    background-color: #c4c4c4;
+    border-radius: 3px;
+}
